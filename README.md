@@ -10,7 +10,7 @@ with external components and add this to your `.yaml` definition:
 
 ```yaml
 external_components:
-  - source: github://ayufan/esphome-components
+  - source: github://tornadojames/esphome-components
 ```
 
 ## 2. Components
