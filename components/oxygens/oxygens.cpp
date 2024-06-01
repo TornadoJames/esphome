@@ -29,7 +29,7 @@ void OxygensSensor::dump_config() {
 void OxygensSensor::read_data_() {
   uint8_t result[1];
   this->read_bytes(SENSOR_AUTO_READ_REG, result, (uint8_t) 1);
-  this->publish_state(((uint16_t) (result[0] << 8) + result[1]));
+  this->publish_state(((uint8_t) (result[0] << 8) + result[1]));
 }
 
 }  // namespace oxygens_sensor
