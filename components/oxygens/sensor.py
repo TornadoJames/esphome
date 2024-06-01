@@ -10,14 +10,14 @@ from esphome.const import (
 CODEOWNERS = ["@tornadojames"]
 DEPENDENCIES = ["i2c"]
 
-sen0321_sensor_ns = cg.esphome_ns.namespace("sen0322_sensor")
-Sen0321Sensor = sen0322_sensor_ns.class_(
-    "Sen0322Sensor", cg.PollingComponent, i2c.I2CDevice
+oxygens_sensor_ns = cg.esphome_ns.namespace("oxygens_sensor")
+OxygensSensor = oxygens_sensor_ns.class_(
+    "OxygensSensor", cg.PollingComponent, i2c.I2CDevice
 )
 
 CONFIG_SCHEMA = (
     sensor.sensor_schema(
-        Sen0322Sensor,
+        OxygensSensor,
         unit_of_measurement=UNIT_PERCENT,
         icon=ICON_PERCENT,
         accuracy_decimals=2,
