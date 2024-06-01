@@ -1,16 +1,14 @@
-/*!
- * @file DFRobot_OxygenSensor.h
- * @brief Define basic struct of DFRobot_OxygenSensor class
- * @details This is an electrochemical oxygen sensor, I2C address can be changed by a dip switch, and the oxygen concentration can be obtained through I2C.
- * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- * @license The MIT License (MIT)
- * @author ZhixinLiu(zhixin.liu@dfrobot.com)
- * @version V1.0.1
- * @date 2023-08-02
- * @url https://github.com/DFRobot/DFRobot_OxygenSensor
- */
-#ifndef __DFRobot_OxygenSensor_H__
-#define __DFRobot_OxygenSensor_H__
+#pragma once
+
+#include "esphome/core/component.h"
+#include "esphome/components/sensor/sensor.h"
+#include "esphome/components/i2c/i2c.h"
+
+// ref:
+// https://github.com/DFRobot/DFRobot_OzoneSensor
+
+#ifndef __OxygensSensor_H__
+#define __OxygensSensor_H__
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -25,11 +23,11 @@
 #define AUTUAL_SET_REGISTER  0x09   ///< register that automatically configure key value
 #define GET_KEY_REGISTER     0x0A   ///< register for obtaining key value
 
-class DFRobot_OxygenSensor
+class OxygensSensor
 {
 public:
-  DFRobot_OxygenSensor(TwoWire *pWire = &Wire);
-  ~DFRobot_OxygenSensor();
+  OxygensSensor(TwoWire *pWire = &Wire);
+  ~OxygensSensor();
   /**
    * @fn begin
    * @brief Initialize i2c
