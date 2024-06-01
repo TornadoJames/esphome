@@ -31,7 +31,7 @@ void OxygensSensor::dump_config() {
 void OxygensSensor::read_data_() {
   uint8_t result[2];
   this->read_bytes(OXYGEN_DATA_REGISTER, result, (uint8_t) 3);
-  this->publish_state(uint16_t) ((_Key) * (((float)result[0]) + ((float)result[1] / 10.0) + ((float)result[2] / 100.0)));
+  this->publish_state(((uint16_t) (result[0]) + result[1] / 10.0 + result[2] / 100.0));
 
 }  // namespace oxygens_sensor
 }  // namespace esphome
