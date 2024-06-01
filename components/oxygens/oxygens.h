@@ -24,7 +24,7 @@ class OxygensSensor : public sensor::Sensor, public PollingComponent, public i2c
  public:
   void update() override;
   void dump_config() override;
-  void setup() override;
+  // void setup() override;
 
  protected:
   void read_data_();
