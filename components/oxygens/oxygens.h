@@ -13,6 +13,9 @@
 #include <Arduino.h>
 #include <Wire.h>
 
+namespace esphome {
+namespace oxygens_sensor {
+
 #define ADDRESS_0   0x70
 #define ADDRESS_1   0x71
 #define ADDRESS_2   0x72
