@@ -19,7 +19,7 @@ CONFIG_SCHEMA = (
     sensor.sensor_schema(
         OxygensSensor,
         unit_of_measurement=UNIT_PERCENT,
-        icon=ICON_PERCENT,
+        icon=ICON_WIFI,
         accuracy_decimals=2,
         state_class=STATE_CLASS_MEASUREMENT,
     )
