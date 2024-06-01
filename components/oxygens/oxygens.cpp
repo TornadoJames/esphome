@@ -7,13 +7,13 @@ namespace oxygens_sensor {
 
 static const char *const TAG = "oxygens_sensor.sensor";
 
-void OxygensSensor::setup() {
-  ESP_LOGCONFIG(TAG, "Setting up oxygens...");
-  if (!this->write_byte(SENSOR_MODE_REGISTER, SENSOR_MODE_AUTO)) {
-    ESP_LOGW(TAG, "Error setting measurement mode.");
-    this->mark_failed();
-  };
-}
+// void OxygensSensor::setup() {
+//   ESP_LOGCONFIG(TAG, "Setting up oxygens...");
+//   if (!this->write_byte(SENSOR_MODE_REGISTER, SENSOR_MODE_AUTO)) {
+//     ESP_LOGW(TAG, "Error setting measurement mode.");
+//     this->mark_failed();
+//   };
+// }
 
 void OxygensSensor::update() { this->read_data_(); }
 
@@ -27,8 +27,8 @@ void OxygensSensor::dump_config() {
 }
 
 void OxygensSensor::read_data_() {
-  uint8_t result[2];
-  this->read_bytes(SENSOR_AUTO_READ_REG, result, (uint8_t) 2);
+  uint8_t result[1];
+  this->read_bytes(SENSOR_AUTO_READ_REG, result, (uint8_t) 1);
   this->publish_state(((uint16_t) (result[0] << 8) + result[1]));
 }
 
