@@ -7,15 +7,17 @@ namespace oxygens_sensor {
 
 static const char *const TAG = "oxygens_sensor.sensor";
 
-// void OxygensSensor::setup() {
-//   ESP_LOGCONFIG(TAG, "Setting up oxygens...");
-//   if (!this->write_byte(SENSOR_MODE_REGISTER, SENSOR_MODE_AUTO)) {
-//     ESP_LOGW(TAG, "Error setting measurement mode.");
-//     this->mark_failed();
-//   };
-// }
+void OxygensSensor::setup() {
+  ESP_LOGCONFIG(TAG, "Setting up oxygens...");
+  if (!this->write_byte(SENSOR_MODE_REGISTER, SENSOR_MODE_AUTO)) {
+    ESP_LOGW(TAG, "Error setting measurement mode.");
+    this->mark_failed();
+  };
+}
 
-void OxygensSensor::update() { this->read_data_(); }
+void OxygensSensor::update() { 
+  this->read_data_(); 
+}
 
 void OxygensSensor::dump_config() {
   ESP_LOGCONFIG(TAG, "DF Robot Oxygen Sensor sen0322:");
