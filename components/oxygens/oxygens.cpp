@@ -10,7 +10,7 @@ OxygensSensor::OxygensSensor(TwoWire *pWire)
   this->_pWire = pWire;
 }
 
-OxygensSensor::~DFRobot_OxygenSensor()
+OxygensSensor::~OxygensSensor()
 {
   this->_pWire = NULL;
 }
