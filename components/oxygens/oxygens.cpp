@@ -1,26 +1,21 @@
-/*!
- * @file DFRobot_OxygenSensor.cpp
- * @brief Define the basic struct of DFRobot_OxygenSensor class, the implementation of basic method
- * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- * @license The MIT License (MIT)
- * @author ZhixinLiu(zhixin.liu@dfrobot.com)
- * @version V1.0.1
- * @date 2022-08-02
- * @url https://github.com/DFRobot/DFRobot_OxygenSensor
- */
-#include "DFRobot_OxygenSensor.h"
+#include "oxygens.h"
+#include "esphome/core/log.h"
+#include "esphome/core/hal.h"
 
-DFRobot_OxygenSensor::DFRobot_OxygenSensor(TwoWire *pWire)
+namespace esphome {
+namespace oxygens_sensor {
+
+OxygensSensor::OxygensSensor(TwoWire *pWire)
 {
   this->_pWire = pWire;
 }
 
-DFRobot_OxygenSensor::~DFRobot_OxygenSensor()
+OxygensSensor::~DFRobot_OxygenSensor()
 {
   this->_pWire = NULL;
 }
 
-bool DFRobot_OxygenSensor::begin(uint8_t addr)
+bool OxygensSensor::begin(uint8_t addr)
 {
   this->_addr = addr;
   _pWire->begin();
@@ -31,7 +26,7 @@ bool DFRobot_OxygenSensor::begin(uint8_t addr)
   return false;
 }
 
-void DFRobot_OxygenSensor::readFlash()
+void OxygensSensor::readFlash()
 {
   uint8_t value = 0;
   _pWire->beginTransmission(_addr);
@@ -49,7 +44,7 @@ void DFRobot_OxygenSensor::readFlash()
   }
 }
 
-void DFRobot_OxygenSensor::i2cWrite(uint8_t reg, uint8_t data)
+void OxygensSensor::i2cWrite(uint8_t reg, uint8_t data)
 {
   _pWire->beginTransmission(_addr);
   _pWire->write(reg);
@@ -57,7 +52,7 @@ void DFRobot_OxygenSensor::i2cWrite(uint8_t reg, uint8_t data)
   _pWire->endTransmission();
 }
 
-void DFRobot_OxygenSensor::calibrate(float vol, float mv)
+void OxygensSensor::calibrate(float vol, float mv)
 {
   uint8_t keyValue = vol * 10;
   if(mv < 0.000001 && mv > (-0.000001) ) {
@@ -68,7 +63,7 @@ void DFRobot_OxygenSensor::calibrate(float vol, float mv)
   }
 }
 
-float DFRobot_OxygenSensor::getOxygenData(uint8_t collectNum)
+float OxygensSensor::getOxygenData(uint8_t collectNum)
 {
   uint8_t rxbuf[10]={0}, k = 0;
   static uint8_t i = 0, j = 0;
@@ -91,7 +86,7 @@ float DFRobot_OxygenSensor::getOxygenData(uint8_t collectNum)
   }
 }
 
-float DFRobot_OxygenSensor::getAverageNum(float bArray[], uint8_t len)
+float OxygensSensor::getAverageNum(float bArray[], uint8_t len)
 {
   uint8_t i = 0;
   double bTemp = 0;
