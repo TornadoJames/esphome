@@ -11,10 +11,10 @@ namespace esphome {
 namespace oxygens_sensor {
 // Sensor Mode
 // While passive is supposedly supported, it does not appear to work reliably.
-static const uint8_t SENSOR_MODE_REGISTER = 0x03;
-static const uint8_t SENSOR_MODE_AUTO = 0x00;
-static const uint8_t SENSOR_MODE_PASSIVE = 0x01;
-static const uint8_t SET_REGISTER = 0x04;
+static const uint8_t OXYGEN_DATA_REGISTER = 0x03;
+static const uint8_t USER_SET_REGISTER = 0x08;
+static const uint8_t ACTUAL_SET_REGISTER = 0x09;
+static const uint8_t GET_KEY_REGISTER = 0x0A;
 
 // Each register is 2 wide, so 0x07-0x08 for passive, or 0x09-0x0A for auto
 // First register is high bits, next low.
