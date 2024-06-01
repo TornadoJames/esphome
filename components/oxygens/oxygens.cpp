@@ -32,7 +32,7 @@ void OxygensSensor::read_data_() {
   this->publish_state(((uint16_t) (result[0] << 8) + result[1]));
 }
 
-}  // namespace sen0321_sensor
+}  // namespace oxygens_sensor
 }  // namespace esphome
 
 // OxygensSensor::OxygensSensor(TwoWire *pWire)
