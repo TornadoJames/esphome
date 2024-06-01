@@ -5,21 +5,20 @@
 #include "esphome/components/i2c/i2c.h"
 
 // ref:
-// https://github.com/DFRobot/DFRobot_OzoneSensor
+// https://github.com/DFRobot/DFRobot_OxygenSensor
 
 namespace esphome {
 namespace oxygens_sensor {
-// Sensor Mode
-// While passive is supposedly supported, it does not appear to work reliably.
+// Sensor Address's
 static const uint8_t OXYGEN_DATA_REGISTER = 0x03;
 static const uint8_t USER_SET_REGISTER = 0x08;
 static const uint8_t ACTUAL_SET_REGISTER = 0x09;
 static const uint8_t GET_KEY_REGISTER = 0x0A;
-
-// Each register is 2 wide, so 0x07-0x08 for passive, or 0x09-0x0A for auto
-// First register is high bits, next low.
-static const uint8_t SENSOR_PASS_READ_REG = 0x07;
-static const uint8_t SENSOR_AUTO_READ_REG = 0x09;
+//I2C Device Address's
+static const uint8_t ADDRESS_0 = 0x70;
+static const uint8_t ADDRESS_1 = 0x71;
+static const uint8_t ADDRESS_2 = 0x72;
+static const uint8_t ADDRESS_3 = 0x73;  ///< iic slave Address select
 
 class OxygensSensor : public sensor::Sensor, public PollingComponent, public i2c::I2CDevice {
  public:
@@ -31,7 +30,7 @@ class OxygensSensor : public sensor::Sensor, public PollingComponent, public i2c
   void read_data_();
 };
 
-}  // namespace sen0321_sensor
+}  // namespace oxygens_sensor
 }  // namespace esphome
 
 // #ifndef __OxygensSensor_H__
